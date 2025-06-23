@@ -41,13 +41,11 @@ python manage.py migrate
 python manage.py runserver
 
 ## 📂 Project Structure
+
 ```
 Solartech/
-├── Admin/ # Django app with views, models, templates
-├── db.sqlite3 # Project database
-├── manage.py # Django manager script
-└── .vscode/ # Editor config
-
-Copy
-Edit
+├── Admin/                  # Django app with views, models, templates
+├── db.sqlite3             # Project database
+├── manage.py              # Django manager script
+└── .vscode/               # Editor config
 ```
