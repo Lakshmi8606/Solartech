@@ -1,0 +1,37 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Feedback</title>
+    
+</head>
+<body>
+    <a href="{% url 'User:homepage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="75%" >
+        <tr>
+            <th colspan="7"><font size="5">View Feedback</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>Subject</th>
+            <th>Feedback</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.feedback_subject}}</td>
+            <td>{{i.feedback_details}}</td>
+            <td>{{i.feedback_postdate}}</td>
+            <td><a href="{% url 'WebAdmin:feedbackDelete' i.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

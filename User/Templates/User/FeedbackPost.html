@@ -1,0 +1,37 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+</head>
+<body>
+    <a href="{% url 'User:homepage' %}">Home</a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table align="center" cellpadding="10">
+            <tr>
+                <th colspan="2"><font size="5">Feedback</font></th>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="txttitle" autofocus required placeholder="Enter feedback title"></td>
+            </tr>
+            <tr>
+                <th>Feedback</th>
+                <td><textarea name="txtdetails" id="" cols="21" rows="5" required placeholder="Enter feedback"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="btnsubmit" value="Send">
+                    <input type="reset" name="btncancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+{% endblock content %}
+</html>

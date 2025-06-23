@@ -1,0 +1,38 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <table border="1" align="center">
+               
+                       
+                    </tr>
+                    <hr>
+                    <table border="1" align="center" cellpadding="1">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Package Name</th>
+                        <th>Package Description</th>
+                        <th> Booking Date</th>
+                        <th> Package Amount</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.package.package_name}}</td>
+                        <td>{{i.package.package_description}}</td>
+                        <td>{{i.packageinterest_date}}</td>
+                        <td>{{i.package.package_amount}}</td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                </tr>
+
+            </table>
+
+        </form>
+    </body>
+    {% endblock content %}
+</html>

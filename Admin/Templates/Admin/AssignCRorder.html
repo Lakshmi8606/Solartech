@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .d-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        .d-profile img {
+            border-radius: 50%;
+        }
+
+        .d-card table {
+            width: 100%;
+        }
+
+        .d-card td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .d-card td:first-child {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .d-card-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .d-card-button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid d-bg-image">
+        <div class="d-profile">
+            <table align="center" style="color: black;" cellpadding="10px" class="d-card">
+              <form  method="POST">
+                {% csrf_token %}
+                <tr>
+                    <td>Subject</td>
+                    <td>{{editdata.subject}}</td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>{{editdata.category.category_name}}</td>
+                </tr>
+                <tr>
+                    <td>Power</td>
+                    <td>{{editdata.system}}</td>
+                </tr>
+                
+                <tr>
+                    <td> Amount</td>
+                    <td>{{editdata.cramount}}</td>
+                </tr>
+                <tr>
+                    <td>
+                   <label for="sp">Select Service Provider</label>
+                    <select name="sp" id="sp">
+                        <option value="select">
+                            {% for i in sp %}
+                        <option value="{{i.id}}">{{i.sp_name}}</option>    
+                            {% endfor %}
+                        </option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Messege</td>
+                    <td><input type="text" name="txtmessage" required></td>
+                </tr>
+               
+
+                <tr>
+
+                  <td colspan="2" align="center">
+                      <input type="submit" name="btnsubmit" value="SEND">
+                     
+                  </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

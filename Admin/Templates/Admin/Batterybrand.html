@@ -1,0 +1,56 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        Battery Brand
+                    </td>
+                    <td>
+                        <input type="text" name="txtbbrand" value="{{editdata.batterybrand_id}}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Rate
+                    </td>
+                    <td>
+                        <input type="text" name="txtbrate" value="{{editdata.battery_rate}}">
+                    </td>
+                    <tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" name="btnsubmit" value="submit">
+                            <input type="reset" name="btncancel" value="cancel">
+                        </td>
+                    </tr>
+                    <hr>
+                    <table border="1" align="center" cellpadding="1">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th> Battery Brand</th>
+                        <th> Rate</th>
+                        <th> Action</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.batterybrand_name}}</td>
+                        <td>{{i.battery_rate}}</td>
+                        <td><a href="{% url 'WebAdmin:delbatterybrand' i.id %}">Delete</a> <a href="{% url 'WebAdmin:Batterybrandupdate' i.id %}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                </tr>
+
+            </table>
+
+        </form>
+    </body>
+    {% endblock content %}
+</html>

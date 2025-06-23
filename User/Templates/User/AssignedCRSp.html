@@ -1,0 +1,52 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Assigned-CR</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="75%" style="text-align: center;">
+        <tr>
+            <th colspan="13"><font size="5">Service Provider Assigned-CR</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>Service Provider</th>
+            <th>Contact Number</th>
+            <th>Location</th>
+            <th>Assigned date</th>
+            <th>Type</th>
+            <th>Panel Brand</th>
+            <th>Battery Brand</th>
+            <th>Inverter Brand</th>
+            <th>Power</th>
+            <th>Amount</th>
+            <th>Assigned Date</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.sp.sp_name}}</td>
+            <td>{{i.sp.sp_contact}}</td>
+            <td>{{i.sp.place_name.place_name}}</td>
+            <td>{{i.crassign_date}}</td>
+            <td>{{i.customisedrequests.category.category_name}}</td>
+            <td>{{i.customisedrequests.panel.panelbrand_name}}</td>
+            <td>{{i.customisedrequests.battery.batterybrand_name}}</td>
+            <td>{{i.customisedrequests.inverter.inverterbrand_name}}</td> 
+            <td>{{i.customisedrequests.system}}</td>
+            <td>{{i.customisedrequests.cramount}}</td> 
+            <td>{{i.crassign_date}}</td> 
+            <td><a href="{% url 'User:POSTComplaint' %}">COMPLAINT</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

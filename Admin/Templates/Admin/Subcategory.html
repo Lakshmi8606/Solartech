@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub Category</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <form method="POST">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <td>Category</td>
+                <td>
+                    <select name="sel_category" id="sel_category">
+                        <option value="">...Select...</option>
+                        {% for i in categorydata %}
+                        <option 
+                        {% if i.id == editdata.category_id %}
+                        selected
+                        {% endif %}
+                        value="{{i.id}}">{{i.category_name}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Sub Category</td>
+                <td><input type="text" name="txtsubcateg" placeholder="Enter the Subcategory" required value="{{editdata.subcateg_name}}"></td>
+            </tr>
+            <tr>
+                
+                <td colspan="2" align="center">
+                    <input type="submit" name="btnsubmit" value="Save">
+                    <input type="reset" name="btncancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <th>Sl.No</th>
+            <th>Category</th>
+            <th>Sub Category</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.category.category_name}}</td>
+            <td>{{i.subcateg_name}}</td>
+            <td><a href="{% url 'WebAdmin:delSubcateg' i.id %}">Delete</a> | <a href="{% url 'WebAdmin:Subcategupdate' i.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

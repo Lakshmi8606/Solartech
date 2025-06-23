@@ -1,0 +1,57 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        Inverter Brand
+                    </td>
+                    <td>
+                        <input type="text" name="txtibrand" value="{{editdata.inverterbrand_name}}">
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            Rate
+                        </td>
+                        <td>
+                            <input type="text" name="txtirate" value="{{editdata.inverter_rate}}">
+                        </td>
+                        <tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" name="btnsubmit" value="submit">
+                            <input type="reset" name="btncancel" value="cancel">
+                        </td>
+                    </tr>
+                    </tr>
+                    
+                    <hr>
+                    <table border="1" align="center" cellpadding="1">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th> Inverter Brand</th>
+                        <th> Rate</th>
+                        <th> Action</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.inverterbrand_name}}</td>
+                        <td>{{i.inverter_rate}}</td>
+                        <td><a href="{% url 'WebAdmin:delinverterbrand' i.id %}">Delete</a> <a href="{% url 'WebAdmin:Inverterbrandupdate' i.id %}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                </tr>
+
+            </table>
+
+        </form>
+    </body>
+    {% endblock content %}
+</html>

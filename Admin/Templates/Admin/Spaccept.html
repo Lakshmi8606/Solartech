@@ -1,0 +1,46 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpListAccepted</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <th>Sl.No</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Photo</th>
+            <th>Proof</th>
+            <th>District</th>
+            <th>Place</th>
+            <th>Action</th>
+        </tr>
+        {% for i in spdata %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.sp_name}}</td>
+            <td>{{i.sp_contact}}</td>
+            <td>{{i.sp_gender}}</td>
+            <td>{{i.sp_email}}</td>
+            <td><img src="{{i.sp_photo.url}}" width="150" height="150" alt=""></td>
+            <td><a href="{{i.sp_proof.url}}" download><img src="{{i.sp_proof.url}}" width="150" height="150" alt=""></a></td>
+            <td>{{i.place_name.district_name.district_name}}</td>
+            <td>{{i.place_name.place_name}}</td>
+            <td>
+                <a href="{% url 'WebAdmin:Spaccept' i.id %}">Accept</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+{% endblock content %}
+</html>

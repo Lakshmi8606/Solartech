@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+        <table border=1 align="center">
+        <tr>
+            <td>
+                Team Name
+            </td>
+            <td>
+                <input type="text" name="txtname" value="{{editdata.team_name}}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Team Flag
+            </td>
+            <td>
+                <input type="text" name="txtflag" value="{{editdata.team_flag}}">
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input type="submit" name="Save" value="save">
+                <input type="reset" name="Cancel" value="cancel">
+            </td>
+        </tr>
+        </table>
+        </form>
+        <hr>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <th>Sl.No</th>
+                <th>Team Name</th>
+                <th>Team Flag</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.team_name}}</td>
+                <td>{{i.team_flag}}</td>
+                <td><a href="{% url 'WebTest:delTeam' i.id %}">Delete</a> <a href="{% url 'WebTest:updateTeam' i.id %}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Complaint</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="75%" style="text-align: center;">
+        <tr>
+            <th colspan="8"><font size="5">New Complaint</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>User Name</th>
+            <th>Title</th>
+            <th>Complaint</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.user_name}}</td>   
+            <td>{{i.complaint_name}}</td>
+            <td>{{i.complaint_content}}</td>
+            <td>{{i.complaint_postdate}}</td>
+            <td><a href="{% url 'WebAdmin:ComplaintReplyInsert' i.id %}">Reply</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

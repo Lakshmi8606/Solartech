@@ -1,0 +1,73 @@
+<html>
+    <body>
+        <form method="POST" id="ProdReg" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center><h1>Player Details</h1></center>
+        <table border="1" align="center">
+            <tr>
+                <td>
+                   Team <select name="sel_team" id="sel_team">
+                        <option value="">...Select...</option>
+                        {% for i in team %}
+                        <option  {% if i.id == editdata.team_id %}  selected  {% endif %}    value="{{i.id}}">{{i.team_name}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Category <select name="cat" id="cat">
+                        <option value="">...Select...</option>
+                        {% for i in cat %}
+                        <option  {% if i.id == editdata.category_id %}  selected  {% endif %}    value="{{i.id}}">{{i.pcategory_name}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                Player Name<input type="text" name="txtname" value="">
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                Player dob<input type="date" name="txtdate" value="">
+                </td>
+            </tr>
+               
+                <tr>
+                    <td>Player Photo<input type="file" name="fileImage"  required ></td>
+                </tr>
+                
+                <tr>
+                <td align="center">
+                    <input type="submit" name="Save" value="save">
+                    <input type="reset" name="Cancel" value="cancel">
+                </td>
+            </tr>
+        </table>
+
+        </form>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <th>Sl.No</th>
+                <th>Team</th>
+                <th>Category</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Photo</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.team_name.team_name}}</td>
+                <td>{{i.pcategory_name.pcategory_name}}</td>
+                <td>{{i.player_name}}</td>
+                <td>{{i.player_dob}}</td>
+                <td><img src="{{i.player_photo.url}}" width="150" height="150" alt=""></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

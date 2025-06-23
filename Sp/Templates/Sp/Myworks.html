@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Requests</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="75%" style="text-align: center;">
+        <tr>
+            <th colspan="8"><font size="5">Installation Requests</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>User</th>
+            <th>Contact number</th>
+            <th>Location</th>
+            <th>Package</th>
+            <th>System Type</th>
+            <th>Package Amount</th>
+            <th>Assigned Date</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.user_name}}</td>
+            <td>{{i.user.user_contact}}</td> 
+            <td>{{ i.user.place_name.place_name }}</td>
+            <td>{{i.packageinterest.package.package_name}}</td>
+            <td>{{i.packageinterest.package.category.category_name}}</td>
+            <td>{{i.packageinterest.package.package_amount}}</td>
+            <td>{{i.assign_date}}</td> 
+            <td><a href="{% url 'Sp:Installstatus' i.id %}">Installation Completed</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

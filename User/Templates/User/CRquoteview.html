@@ -1,0 +1,57 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation Received</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="100%" style="text-align: center;">
+        <tr>
+            <th colspan="10"><font size="5">Quotations Received</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>Subject</th>
+            <th>Power</th>
+            <th>Panel</th>
+            <th>Inverter</th>
+            <th>Battery</th>
+            <th>Amount</th>
+            <th>Reply </th>
+            <th>Reply Date</th>
+            <th>Quotation</th>
+           
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            
+            <td>{{i.subject}}</td>
+            <td>{{i.system}}</td>
+            <td>{{i.panel.panelbrand_name}}</td>
+            <td>{{i.inverter.inverterbrand_name}}</td> 
+            <td>{{i.battery.batterybrand_name}}</td>
+            <td>{{i.cramount}}</td>
+            <td>{{i.customisedrequests_reply}}</td>
+            <td>{{i.customisedrequests_replydate}}</td>
+            
+            <td>
+                <a href="{{i.quote_file.url}}" download>download/</a>
+                <a href="{% url 'User:CRPayment' i.id %}">Paynow</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>
+
+<td>{{i.category.category_name}}</td>
+                    <td>{{i.panel.panelbrand_name}}</td>
+                    
+                    

@@ -1,0 +1,28 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Quotation</title>
+</head>
+<body>
+    <table border="1" align="center" cellpadding="5">
+        <tr>
+            <th>Sl.No</th>
+            <th>Package Interest Reply</th>
+            <th>Quotation</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.packageinterest_reply}}</td>
+            <td><a href="{{i.quote_file.url}}" download>download</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

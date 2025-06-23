@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customised Request Reply </title>
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table align="center" cellpadding="10">
+            <tr>
+                <th colspan="2"><font size="5">Package Interest Reply </font></th>
+            </tr>
+            <tr>
+                <th>Customised Request Reply </th>
+                <td><textarea name="txtquote" id="" cols="21" rows="5" required placeholder="Enter Reply"></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    Amount
+                </td>
+                <td><input type="text" name="txtamt" value=""></td>
+            </tr>
+            <tr>
+                <td>Quotation<input type="file" name="Quotation"  required ></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="btnsubmit" value="Send">
+                    <input type="reset" name="btncancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

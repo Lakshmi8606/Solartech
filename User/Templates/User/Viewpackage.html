@@ -1,0 +1,44 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" align="center" cellpadding="5">
+        <tr>
+            <th>Sl.No</th>
+            <th>Package Name</th>
+            <th>Description</th>
+            <!-- <th>Type</th> -->
+            <!-- <th>Panel Brand</th> -->
+            <!-- <th>Inverter Brand</th> -->
+            <!-- <th>Battery Brand</th> -->
+            <th>Power</th>
+            <th>Amount</th>
+            <!-- <th>Message</th> -->
+            <th>Action</th>     
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.package_name}}</td>
+            
+            <td>{{i.package_description}}</td>
+            <!-- <td>{{i.category.category_name}}</td> -->
+            <!-- <td>{{i.panel.panelbrand_name}}</td> -->
+            <!-- <td>{{i.battery.batterybrand_name}}</td> -->
+            <!-- <td>{{i.inverter.inverterbrand_name}}</td>  -->
+            <td>{{i.power}}</td>
+            <td>{{i.package_amount}}</td>
+            <td><a href="{% url 'User:Sendinterest' i.id %}">Get a Quote</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Reply</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table align="center" cellpadding="10">
+            <tr>
+                <th colspan="2"><font size="5">Complaint Reply</font></th>
+            </tr>
+            <tr>
+                <th>Complaint Reply</th>
+                <td><textarea name="txtreply" id="" cols="21" rows="5" required placeholder="Enter complaint reply"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="btnsubmit" value="Send">
+                    <input type="reset" name="btncancel" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

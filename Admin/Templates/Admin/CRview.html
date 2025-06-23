@@ -1,0 +1,32 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+            <table border="1" align="center" cellpadding="5">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Subject</th>
+                    <th>Type</th>
+                    <th>Panel Brand</th>
+                    <th>Battery Brand</th>
+                    <th>Inverter Brand</th>
+                    <th>Power</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.subject}}</td>
+                    <td>{{i.category.category_name}}</td>
+                    <td>{{i.panel.panelbrand_name}}</td>
+                    <td>{{i.battery.batterybrand_name}}</td>
+                    <td>{{i.inverter.inverterbrand_name}}</td> 
+                    <td>{{i.system}}</td>
+                    <td><a href="{% url 'WebAdmin:CRReplyInsert' i.id %}">Give a Quote</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </body>
+    </html> 
+</body>
+{% endblock content %}
+</html>

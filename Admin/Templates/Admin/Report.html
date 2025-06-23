@@ -1,0 +1,54 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        From Date
+                    </td>
+                    <td>
+                        <input type="date" name="txtfromdate" >
+                    </td></tr>
+                   <tr><td>
+                        To Date
+                    </td>
+                    <td>
+                        <input type="date" name="txttodate" >
+                    </td>
+                    <tr>
+                        <td colspan="5" align="center">
+                            <input type="submit" name="btnsubmit" value="submit">
+                            <input type="reset" name="btncancel" value="cancel">
+                        </td>
+                    </tr>
+                    <hr>
+                    <table border="1" align="center" cellpadding="1">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>User Name</th>
+                        <th> Booking Date</th>
+                        <th> Product Name</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.user.user_name}}</td>
+                        <td>{{i.assign_date}}</td>
+                        <td>{{i.packageinterest.package.package_name}}</td>
+                        <td>{{i.packageinterest.package.package_amount}}</td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                </tr>
+
+            </table>
+
+        </form>
+    </body>
+    {% endblock content %}
+</html>

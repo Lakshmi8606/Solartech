@@ -1,0 +1,53 @@
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stock</title>
+        
+    </head>
+    <body>
+        <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home </a>
+        </tr>
+        <form method="POST">
+            {% csrf_token %} 
+            <table border="3" align="center">
+                <tr>
+                    <td>Date</td>
+                    <td><input type="date" name="txtdate" placeholder="Enter the date" required ></td>
+                </tr>
+                <tr>
+                    <td>Stock Quantity</td>
+                    <td><input type="text" name="txtstock" placeholder="Enter stock quantity" required ></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        
+                        <input type="submit" value="Save">
+                        <input type="submit" value="Cancel">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+    </html>
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <th>Sl.No</th>
+            <th>Quantity</th>
+            <th>Product</th>
+            <td>Date</td>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.stock_quantity}}</td>
+            <td>{{i.package.package_name}}</td>
+            <td>{{i.stock_date}} </td>
+            <td><a href="{% url 'WebAdmin:delstock' i.id %}">Delete</a></td>    
+        </tr>
+        </tr>
+        {% endfor %}
+    
+    </table>

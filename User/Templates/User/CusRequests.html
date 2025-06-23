@@ -1,0 +1,152 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customized Requests</title>
+    <style>
+        body {
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/016/263/520/small/natural-green-background-with-summer-sun-and-lens-flare-sunlight-on-green-natural-background-photo.jpg');
+            background-size: cover; /* Adjusts the background image size */
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" id="Package" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="1" align="center">
+            <!-- Your form content here -->
+        </table>
+    </form>
+    <table border="1" align="center" cellpadding="5">
+        <!-- Your table content here -->
+    </table>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customized Requests</title>
+</head>
+<body>
+    <html>
+        <body>
+            <form method="POST" id="Package" enctype="multipart/form-data">
+                {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        Subject
+                    </td>
+                    <td><input type="text" name="txtsubject" value=""></td>
+                </tr> 
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        <select name="sel_category" id="sel_category">
+                            <option value=""></option>
+                            {% for i in category %}
+                            <option 
+                            {% if i.id == editdata.category_id %}
+                            selected
+                            {% endif %}
+                            value="{{i.id}}">{{i.category_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Panel Brand</td>
+                    <td>
+                       <select name="sel_pbrand" id="sel_pbrand">
+                            <option value=""></option>
+                            {% for i in panelbrand %}
+                            <option 
+                            {% if i.id == editdata.panelbrand_id %}
+                            selected
+                            {% endif %}
+                            value="{{i.id}}">{{i.panelbrand_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Inverter Brand</td>
+                    <td>
+                      <select name="sel_ibrand" id="sel_ibrand">
+                            <option value=""></option>
+                            {% for i in inverterbrand %}
+                            <option 
+                            {% if i.id == editdata.inverterbrand_id %}
+                            selected
+                            {% endif %}
+                            value="{{i.id}}">{{i.inverterbrand_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Battery Brand</td>
+                    <td>
+                       <select name="sel_bbrand" id="sel_bbrand">
+                            <option value=""></option>
+                            {% for i in batterybrand %}
+                            <option 
+                            {% if i.id == editdata.batterybrand_id %}
+                            selected
+                            {% endif %}
+                            value="{{i.id}}">{{i.batterybrand_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Power KW
+                    </td>
+                    <td><input type="text" name="txtpower" value=""></td>
+                </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                        <input type="submit" name="Save" value="save">
+                        <input type="reset" name="Cancel" value="cancel">
+                    </td>
+                </tr>
+            </table>
+    
+            </form>
+            <table border="1" align="center" cellpadding="5">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Subject</th>
+                    <th>Type</th>
+                    <th>Panel Brand</th>
+                    <th>Battery Brand</th>
+                    <th>Inverter Brand</th>
+                    <th>Power</th>
+                </tr>
+                {% for i in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.subject}}</td>
+                    <td>{{i.category.category_name}}</td>
+                    <td>{{i.panel.panelbrand_name}}</td>
+                    <td>{{i.battery.batterybrand_name}}</td>
+                    <td>{{i.inverter.inverterbrand_name}}</td> 
+                    <td>{{i.system}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </body>
+    </html> 
+</body>
+{% endblock content %}
+</html>

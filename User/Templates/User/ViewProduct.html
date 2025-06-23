@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title></title>
+</head>
+<body>
+              <form method="POST"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <center><h1>Products Gallery</h1></center>
+                            <table align="center" border="1">
+                                <tr>
+                                    <td>Category</td>
+                                        <td>
+                                            <select name="sel_category" id="sel_category">
+                                                <option value="">...Select...</option>
+                                                {% for i in cat %}
+                                                <option {% if i.id == editdata.category_id %} selected {% endif %} value="{{i.id}}">
+                                                    {{i.category_name}}
+                                                </option>
+                                                {% endfor %} 
+                                            </select>
+                                        </td>
+                                </tr>  
+                                
+                                          <th colspan="4">
+                                              <input type="submit" value="Save" name="btnsave">
+                                              <input type="reset" value="Cancel" name="btncancel">
+                                          </th>
+                                      </tr>
+                            </table>
+</body>
+</html>
+
+
+
+<table align="center" border="1" cellpadding="5">
+              <tr>
+                  <th>SI.No</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Photo</th>
+              </tr>
+              {% for i in product %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.product_name}}</td>
+                <td>{{i.product_price}}</td>
+                <td>{{i.product_desc}}</td>
+                <td><img src="{{i.product_image.url}}" width="50" height="50" id=""></td>
+                
+              </tr>
+              {% endfor %}
+          </table>

@@ -1,0 +1,45 @@
+
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        Category
+                    </td>
+                    <td>
+                        <input type="text" name="txtcat" value="{{editdata.category_name}}">
+                    </td>
+                    <tr>
+                        <td colspan="5" align="center">
+                            <input type="submit" name="btnsubmit" value="submit">
+                            <input type="reset" name="btncancel" value="cancel">
+                        </td>
+                    </tr>
+                    <hr>
+                    <table border="1" align="center" cellpadding="1">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th> Category</th>
+                        <th> Action</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.category_name}}</td>
+                        <td><a href="{% url 'WebAdmin:delcategory' i.id %}">Delete</a> <a href="{% url 'WebAdmin:Categoryupdate' i.id %}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                </tr>
+
+            </table>
+
+        </form>
+    </body>
+    {% endblock content %}
+</html>

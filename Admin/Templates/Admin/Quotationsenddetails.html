@@ -1,0 +1,40 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation Send Details</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="100%" style="text-align: center;">
+        <tr>
+            <th colspan="8"><font size="5">Quotation Send Details</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>User Name</th>
+            <th>Package</th>
+            <th>Reply</th>
+            <th>Reply Date</th>
+            <th>Quotation</th>
+            
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.user_name}}</td>
+            <td>{{i.package.package_name}}</td>
+            <td>{{i.packageinterest_reply}}</td>
+            <td>{{i.packageinterest_replydate}}</td>
+            
+            <td><a href="{{i.quote_file.url}}" download>download</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

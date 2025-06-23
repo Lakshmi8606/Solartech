@@ -1,0 +1,63 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <style>
+        .button-cell {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <table border="1" align="center">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="txtname" value="{{editdata.admin_name}}"></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" name="txtcontact" value="{{editdata.admin_contact}}"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="txtemail" value="{{editdata.admin_email}}"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="text" name="txtpass" value="{{editdata.admin_password}}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button-cell">
+                    <input type="submit" name="btnsubmit" value="submit">
+                    <input type="reset" name="btncancel" value="cancel">
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table border="1" align="center" cellpadding="5">
+            <tr>
+                <th>Sl.No</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.admin_name}}</td>
+                    <td>{{i.admin_contact}}</td>
+                    <td>{{i.admin_email}}</td>
+                    <td>{{i.admin_password}}</td>
+                    <td><a href="{% url 'WebAdmin:delAdminreg' i.id %}">Delete</a> <a href="{% url 'WebAdmin:Adminregupdate' i.id %}">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+{% endblock content %}
+</html>

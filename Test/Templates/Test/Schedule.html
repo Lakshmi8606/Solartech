@@ -1,0 +1,58 @@
+<html>
+    <body>
+        <form method="POST" id="ProdReg" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center><h1>Player Details</h1></center>
+        <table border="1" align="center">
+            
+            <tr>
+                <td>
+                 Name<input type="text" name="txtname" value="">
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                From Date<input type="date" name="txtfrom" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                To Date<input type="date" name="txtto" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 Venue<input type="text" name="txtvenue" value="">
+                </td>
+            </tr>
+                
+                <tr>
+                <td align="center">
+                    <input type="submit" name="Save" value="save">
+                    <input type="reset" name="Cancel" value="cancel">
+                </td>
+            </tr>
+        </table>
+
+        </form>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <th>Sl.No</th>
+                <th>Match Name</th>
+                <th>Match From</th>
+                <th>Match To</th>
+                <th>Match Venue</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.match_name}}</td>
+                <td>{{i.match_from}}</td>
+                <td>{{i.match_to}}</td>
+                <td>{{i.match_vanue}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

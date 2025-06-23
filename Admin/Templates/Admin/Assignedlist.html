@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sp assigned list</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="75%" style="text-align: center;">
+        <tr>
+            <th colspan="8"><font size="5">Sp assigned list</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>Service Provider</th>
+            <th>Contact</th>
+            <th>Location</th>
+            <th>User Name</th>
+            <th>User Contact</th>
+            <th>User Location</th>
+            <th>Assigned Date</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.sp.sp_name}}</td>
+            <td>{{i.sp.sp_contact}}</td>
+            <td>{{i.sp.place_name.place_name}}</td>
+            <td>{{i.user.user_name}}</td>
+            <td>{{i.user.user_contact}}</td> 
+            <td>{{ i.user.place_name.place_name }}</td>   
+            <td>{{i.assign_date}}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

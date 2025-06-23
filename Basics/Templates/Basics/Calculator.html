@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+        <table border="1" align="center">
+            <tr>
+                <td>
+                    Number1<input type="text" name="Number1">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Number1<input type="text" name="Number2">
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="submit" name="num" value="+">
+                    <input type="submit" name="num" value="-">
+                    <input type="submit" name="num" value="*">
+                    <input type="submit" name="num" value="/">
+                </td>
+            </tr>
+        </table>
+        </form>
+        Result={{Result}}
+    </body>
+</html>

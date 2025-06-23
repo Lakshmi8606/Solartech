@@ -1,0 +1,93 @@
+<html>
+    <body>
+        <form method ="POST">
+            {% csrf_token %}
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        FirstName<input type="text" name="txtfname" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        LastName<input type="text" name="txtlname" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender<input type="radio" name="gender" value="Male">Male
+                        <input type="radio" name="gender" value="Female">Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Department">Choose a Department</label>
+                        <select name="Department" id="Department">
+                <option value="maths">Mathematics</option>
+                <option value="english">English</option>
+                <option value="physics">Physics</option>
+                <option value="Computer Science">Computer Science</option>
+                </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Mark1<input type="text" name="txtm1" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Mark2<input type="text" name="txtm2" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Mark3<input type="text" name="txtm3" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="submit" name="btnsubmit" value="submit">
+                        <input type="reset" name="btncancel" value="cancel">
+                    </td>
+                </tr>
+                
+            </table><br>
+            <table border="1" align="center">
+                <tr>
+                    <td>
+                        Name={{name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender={{gender}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Department={{dept}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Total={{total}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Per={{per}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Grade={{grade}}
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+    </body>
+</html>

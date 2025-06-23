@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism Login Form | CodingNepal</title>
+  <link rel="stylesheet" href="{% static 'logintmp/style.css' %}">
+</head>
+<body>
+  <div class="wrapper">
+    <form action="" method="post">
+      {% csrf_token %}
+    <!-- <form action="#"> -->
+      <h2>Login</h2>
+        <div class="input-field">
+        <input type="text" name="txt_email" required>
+        <label>Enter your email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="txt_password" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit">Log In</button>
+      <div class="register">
+        <!-- <a href="{% url 'WebGuest:Login' %}" class="nav-item nav-link">Login</a> -->
+
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
+    </form>
+  </div>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <h3>Login Here</h3>
+
+    <label for="username">Username</label>
+    <input type="text" name="txt_email" placeholder="Email or Phone" id="username">
+
+    <label for="password">Password</label>
+    <input type="password" name="txt_password" placeholder="Password" id="password">
+    <input type="submit" name="submit" >
+     
+    </div>
+</form>
+{% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+
+
+</body>
+</html>

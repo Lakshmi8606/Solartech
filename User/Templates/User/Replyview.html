@@ -1,0 +1,35 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Complaint Replies</title>
+</head>
+<body>
+    <table border="1" align="center" cellpadding="5">
+        <tr>
+            <th>Sl.No</th>
+            <th>Complaint Title</th>
+            <th>Complaint Post Date</th>
+            <th>Complaint Content</th>
+            <th>Complaint Reply</th>
+            <th>Complaint Reply Date</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.complaint_name}}</td>
+            <td>{{i.complaint_postdate}}</td>
+            <td>{{i.complaint_content}}</td>
+            <td>{{i.complaint_reply}}</td>
+            <td>{{i.complaint_replydate}}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

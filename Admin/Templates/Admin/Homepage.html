@@ -1,0 +1,102 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        /* Style for rectangular buttons */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Change to desired background color */
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3; /* Change to desired hover color */
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><a href="{% url 'WebAdmin:DistrictInsertSelect' %}" class="button">District</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:PlaceInsertSelect' %}" class="button">Place</a></td>
+        </tr>
+        
+        <tr>
+            <td><a href="{% url 'WebAdmin:LoadingHomePage' %}" class="button">Home</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Userlistview' %}" class="button">Userlistview</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Useracceptedlist' %}" class="button">Useracceptedlist</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Userrejectedlist' %}" class="button">Userrejectedlist</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Splistview' %}" class="button">Splistview</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Spacceptedlist' %}" class="button">Spacceptedlist</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Sprejectedlist' %}" class="button">Sprejectedlist</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:ComplaintSelect' %}" class="button">New Complaints</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:ComplaintSolvedSelect' %}" class="button">Solved Complaints</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:PackageInsertSelect' %}" class="button">Add Package</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:PackageInterestSelect' %}" class="button">PackageInterests</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Quotationsend' %}" class="button">Quotations Send</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Paidorders' %}" class="button">Paid Orders</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Assignedlistview' %}" class="button">Service Provider's Assignedlist View </a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:Installations' %}" class="button">Installations </a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:CRview' %}" class="button">CRview </a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:PaidCRorders' %}" class="button">PaidCRorders </a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:CRAssignedlistview' %}" class="button">CRAssignedlistview </a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:CRInstallations' %}" class="button">CRInstallations </a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'WebAdmin:feedbackSelect' %}" class="button">Feedbacks</a></td>
+        </tr>
+    </table>
+</body>
+{% endblock content %}
+</html>

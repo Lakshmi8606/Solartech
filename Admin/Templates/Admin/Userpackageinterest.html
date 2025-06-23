@@ -1,0 +1,44 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<head>
+   
+    <title>User Package Interests</title>
+    
+</head>
+<body>
+  
+        <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+        <table border="1" align="center">
+            <tr>
+                <th colspan="9">User Package Interests</th>
+            </tr>
+            <tr>
+                <th>Sl No</th>
+                <th>User Name</th>
+                <th>Contact Number</th>
+                <th>Location</th>
+                <th>Package</th>
+                <th>Package Amount</th>
+                <th>Message</th>
+                <th>Package Interest Date</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.user.user_name}}</td>
+                <td>{{i.user.user_contact}}</td> 
+                <td>{{ i.user.place_name.place_name }}</td>
+                <td>{{i.package.package_name}}</td>
+                <td>{{i.package.package_amount}}</td>
+                <td>{{i.packageinterest_msg}}</td>
+                <td>{{i.packageinterest_date}}</td>
+                <td><a href="{% url 'WebAdmin:PIReplyInsert' i.id %}">Give a Quote</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+{% endblock content %}
+</html>

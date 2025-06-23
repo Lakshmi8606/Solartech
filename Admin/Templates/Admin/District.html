@@ -1,0 +1,41 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+        <table border=1 align="center">
+        <tr>
+            <td>
+                District
+            </td>
+            <td>
+                <input type="text" name="txtdist" value="{{editdata.district_name}}">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" align="center">
+                <input type="submit" name="Save" value="save">
+                <input type="reset" name="Cancel" value="cancel">
+            </td>
+        </tr>
+        </table>
+        </form>
+        <hr>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <th>Sl.No</th>
+                <th>District</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.district_name}}</td>
+                <td><a href="{% url 'WebAdmin:delDistrict' i.id %}">Delete</a> <a href="{% url 'WebAdmin:Districtupdate' i.id %}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+    {% endblock content %}
+</html>

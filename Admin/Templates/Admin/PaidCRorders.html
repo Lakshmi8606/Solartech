@@ -1,0 +1,46 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paid Customised Request Orders</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="75%" style="text-align: center;">
+        <tr>
+            <th colspan="10"><font size="5">Paid Customised Request Orders</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>User Name</th>
+            <th>Contact Number</th>
+            <th>Location</th>
+            <th>Type</th>
+            <th>Panel</th>
+            <th>Battery</th>
+            <th>Inverter</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.user_name}}</td>   
+            <td>{{i.user.user_contact}}</td> 
+            <td>{{ i.user.place_name.place_name }}</td>
+            <td>{{i.category.category_name}}</td>
+            <td>{{i.panel.panelbrand_name}}</td>
+            <td>{{i.battery.batterybrand_name}}</td>
+            <td>{{i.inverter.inverterbrand_name}}</td>
+            <td>{{i.cramount}}</td>
+            <td><a href="{% url 'WebAdmin:AssignCRorder' i.id %}">Assign order to Sp</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

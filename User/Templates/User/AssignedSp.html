@@ -1,0 +1,44 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Assigned</title>
+</head>
+<body>
+    <a href="{% url 'WebAdmin:LoadingHomePage' %}">Home</a>
+    <table align="center" cellpadding="10" border="1" width="75%" style="text-align: center;">
+        <tr>
+            <th colspan="10"><font size="5">Service Provider Assigned</font></th>
+        </tr>
+        <tr>
+            <th>Sl No</th>
+            <th>Service Provider</th>
+            <th>Contact Number</th>
+            <th>Location</th>
+            <th>Assigned date</th>
+            <th>Package</th>
+            <th>System Type</th>
+            <th>Package Amount</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.sp.sp_name}}</td>
+            <td>{{i.sp.sp_contact}}</td>
+            <td>{{i.sp.place_name.place_name}}</td>
+            <td>{{i.assign_date}}</td>
+            <td>{{i.packageinterest.package.package_name}}</td>
+            <td>{{i.packageinterest.package.category.category_name}}</td>
+            <td>{{i.packageinterest.package.package_amount}}</td>
+            <td><a href="{% url 'User:POSTComplaint' %}">COMPLAINT</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}
+</html>

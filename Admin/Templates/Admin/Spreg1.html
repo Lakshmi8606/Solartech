@@ -1,0 +1,133 @@
+{% extends 'Admin/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST" id="ServiceReg" enctype="multipart/form-data">
+            {% csrf_token %}
+        <table border="1" align="center">
+            <tr>
+                <td>
+               <label for="district">District</label>
+                <select name="ddldistrict" id="ddldistrict">
+                    <option value="select">
+                        {% for i in district %}
+                    <option value="{{i.id}}">{{i.district_name}}</option>    
+                        {% endfor %}
+                    </option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Place<select name="place" id="place">
+                        <option value="">...Select...</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                Name<input type="text" name="txtname" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender<input type="radio" name="gender" value="Male">Male
+                    <input type="radio" name="gender" value="Female">Female
+                </td>
+            </tr>
+            <tr>
+                <td>
+                Contact<input type="text" name="txtcontact" value="">
+                </td>
+            </tr>
+            
+                <tr>
+                    <td>
+                    Email<input type="text" name="txtemail" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Password<input type="password" name="txtpassword" value="">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Photo<input type="file" name="fileImage"  required ></td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Proof<input type="file" name="fileProof"  required ></td>
+                </tr>
+                <tr>
+                    <td>
+                    Qualification<input type="qualification" name="txtqualification" value="">
+                    </td>
+                </tr>
+                <tr>
+                <td align="center">
+                    <input type="submit" name="Save" value="save">
+                    <input type="reset" name="Cancel" value="cancel">
+                </td>
+            </tr>
+        </table>
+
+        </form>
+        <!-- <table border="1" align="center" cellpadding="1">
+            <tr>
+                <th>Sl.No</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>District name</th>
+                <th>Place name</th>
+                <th>Photo</th>
+                <th>IDProof</th>
+                <th>Qualification(Technicall Skills)</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.sp_name}}</td>
+                <td>{{i.sp_gender}}</td>
+                <td>{{i.sp_contact}}</td>
+                <td>{{i.sp_email}}</td>
+                <td>{{i.sp_password}}</td>
+                <td>{{i.place_name.district_name.district_name}}</td>
+                <td>{{i.place_name.place_name}}</td>
+                <td><img src="{{i.sp_photo.url}}" width="150" height="150" alt=""></td>
+                <td><img src="{{i.sp_proof.url}}" width="150" height="150" alt=""></td>
+                <td>{{i.sp_qualification}}</td>
+            </tr>
+            {% endfor %}
+        </table> -->
+    </body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#ddldistrict").change(function () {
+        var did = $(this).val();
+        var ur = "{% url  'WebAdmin:ajaxplace1' %}";
+        $.ajax({
+            url: ur,
+            data: { did: did, },
+            success: function (data) {
+                $("#place").html(data);
+            },
+        });
+    });
+</script>
+
+
+
+
+
+
+{% endblock content %}
+
+
+</html>

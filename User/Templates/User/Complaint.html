@@ -1,0 +1,52 @@
+{% extends 'User/header.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+        <table border=1 align="center">
+        <tr>
+            <td>
+                Complaint Title
+            </td>
+            <td>
+                <input type="text" name="txtcomp" value="{{editdata.complaint_name}}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Complaint Content
+            </td>
+            <td>
+                <input type="text" name="txtcontent" value="{{editdata.complaint_content}}">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="Save" value="save">
+                <input type="reset" name="Cancel" value="cancel">
+            </td>
+        </tr>
+        </table>
+        </form>
+        <hr>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <th>Sl.No</th>
+                <th>Complaint Title</th>
+                <th>Complaint Content</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.complaint_name}}</td>
+                <td>{{i.complaint_content}}</td>
+                <td><a href="{% url 'User:delComplaint' i.id %}">Delete</a> <a href="{% url 'User:ComplaintUpdate' i.id %}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+    {% endblock content %}
+</html>
