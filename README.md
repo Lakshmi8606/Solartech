@@ -6,11 +6,11 @@ A web-based platform built with Django for managing solar energy components, cus
 
 ## 🚀 Features
 
-- Admin dashboard to manage categories, products, complaints, and installations
-- CR (Customer Representative) request assignment and tracking
-- Dynamic UI rendering using Django templates
-- AJAX-based interactivity for responsive user experience
-- SQLite database integration for data storage
+- Admin dashboard to manage categories, products, complaints, and installations  
+- CR (Customer Representative) request assignment and tracking  
+- Dynamic UI rendering using Django templates  
+- AJAX-based interactivity for responsive user experience  
+- SQLite database integration for data storage  
 - Modular and extendable Django app structure
 
 ---
@@ -39,6 +39,9 @@ python manage.py migrate
 
 # Start the development server
 python manage.py runserver
+```
+
+---
 
 ## 📂 Project Structure
 
