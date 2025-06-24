@@ -19,10 +19,11 @@ from django.urls import path,include
 
 from django.conf.urls.static import static
 from django.conf import settings
-
+from django.shortcuts import redirect
 
 
 urlpatterns = [
+     path('', lambda request: redirect('/Guest/index/')),
     path('admin/', admin.site.urls),
     path('webbasics/',include('Basics.urls')),
     path('Admin/',include('Admin.urls')),
